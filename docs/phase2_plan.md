@@ -16,6 +16,20 @@
 - [P]에서 가져올 것: ① pixel↔arbiter handshake 회로 (Fig. 2, 3), ② binary-tree arbiter (Fig. 6, 7), ③ array/주변회로 연결 구조 (Fig. 10), ④ **Verilog-A 행위 모델로 대형 array를 검증하는 방법론** (Sec. 5, 6).
 - 차별화 포인트: [P]의 AER은 이벤트 1개당 row arb → col arb 왕복을 하는 **고전적 AER**이다. 이것을 baseline으로 두고, 처리량을 높인 **개선 AER**과 정량 비교하는 것을 발표의 축으로 삼는다. 과제 문구("Readout 효율 향상을 위한 AER")에 그대로 대응한다.
 
+## 0.3 대회 요구사항 대응표 (1차 미흡 항목 포함)
+
+최종 제출(10/30)은 1·2차 요구사항을 모두 포함해 평가되므로, 1차 보고서에서 정량 근거가 없던 항목을 2차 작업에 함께 넣는다.
+
+| 요구사항 | 1차 보고서 상태 | 2차에서 할 일 (정량 지표) |
+|---|---|---|
+| 1차: DVS pixel 설계 | ✅ schematic/layout/PEX | STEP 1 handshake 완성 |
+| 1차: 잡음 최소화 | △ 가속 버퍼로 라인 누설에 의한 오트리거만 다룸 | **N1** Spectre transient noise로 Vdiff 노이즈 rms 측정 (수광부 shot/열잡음, SF 대역폭). **N2** 일정 조도에서 오이벤트율(background activity, events/pixel/s) 측정. **N3** Mr 리셋 kTC / charge injection 오프셋 측정. **N4** 가속 버퍼 on/off 오트리거 비교. 개선 수단: Vbias_sf로 대역 제한, C2 크기, Mr 크기 / dummy |
+| 1차: Minimum sensitivity threshold 최소화 | ✗ 수치 없음 | **T1** 이론: θ_ON ≈ exp((Vdiff0−V_ON)/(n·U_T·C1/C2))−1. **T2** 시뮬레이션: Iph 1 pA/100 pA/10 nA에서 계단 ΔIph/Iph를 sweep → 이벤트가 나는 최소 대비(%). **T3** Monte Carlo(mismatch)로 threshold σ (FPN). **결론**: θ_min = max(노이즈 기준 ~5σ_noise, mismatch 3σ) → 이 값까지 Vbias_ON/OFF를 좁힌 설정 제시 |
+| 1차: In-pixel event memory | △ 명시적 구조 없음 (C2 전압과 요청 유지에 의존) | **M1** 비교기 출력 뒤 2-bit SR latch (ON/OFF) 추가: VON/VOFF로 set, Vreset(ACK_ROW·ACK_COL)으로 clear → arbiter 대기 중에 Vdiff가 변하거나 누설돼도 이벤트 / 극성 보존. **M2** 래치 없음 vs 있음: ACK 지연 sweep 시 이벤트 손실률 비교 |
+| 2차: 256×256 array | ✗ | STEP 2 (타일링 layout), STEP 7 (top 조립, DRC/LVS), STEP 5 (full-scale 검증) |
+| 2차: AER 방식 설계 | ✗ | STEP 1 (pixel 측 4-phase handshake), STEP 3 (라인 인터페이스, DC, 8단 tree, 인코더) = baseline AER |
+| 2차: Readout 효율 향상 AER 적용 | ✗ | STEP 6: Row-burst(word-serial) AER 또는 greedy arbiter. baseline 대비 처리량(Meps), 지연(ns), pJ/event, 공정성 비교 |
+
 ## 0.5 실행 단계 (1차 보고서 기준, 이 순서대로 설계 시작)
 
 ### STEP 1. Pixel handshake 완성 ([P] Fig. 2a, 2b, 3b) — 가장 먼저
@@ -25,6 +39,8 @@
 - Reset (Fig. 3b): `Mref_r` pull-up(`Vref_reset`)과 직렬 NMOS `Mar(ack_row)`·`Mac(ack_col)`로 `Vreset` → Low를 만들고, PMOS Mr이 C2를 방전한다.
 - 검증: 1 pA→10 nA→1 pA 램프(5 ms)에서 ON/OFF 이벤트 수, req→ack→reset 순서, reset 이후 req 해제를 확인한다. 응답지연을 sweep(10 ns~10 µs)해서, ack가 늦어도 Vdiff 누설로 오동작하지 않는지 본다 (1차 보고서 3장 4번째 항목).
 - 산출물: `dvs_pixel` 심볼 (핀: `PD, Vbias_*, Vion, Vioff, Vref_reset, REQ_ROW, ACK_ROW, REQ_ON_COL, REQ_OFF_COL, ACK_COL`)
+
+- **STEP 1에 추가 (요구사항 대응)**: M1 in-pixel latch를 같이 넣는다 (latch 출력이 Ma1/Mb2를 구동하도록). 회로 동결 전에 N1~N3, T1~T3 시뮬레이션을 수행한다.
 
 ### STEP 2. Pixel 면적 축소 + 타일링 가능한 layout 재설계
 1차 layout은 **C1/C2 unit cap 배열이 대부분의 면적**을 차지한다. 이대로 256×256으로 늘리면 die가 비현실적으로 커진다. Array 조립 전에 반드시 정리해야 한다.
