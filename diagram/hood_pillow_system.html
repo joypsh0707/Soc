@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { width: 1600px; background: #fff; font-family: "Noto Sans KR", "WenQuanYi Zen Hei", sans-serif; color: #222; padding: 30px 30px 20px; }
+  .wrap { position: relative; }
+  .zone { position: absolute; border: 2px dashed #b9bcc4; border-radius: 26px; }
+  .zone-title { position: absolute; font-weight: 900; color: #f2b705; font-size: 30px; line-height: 1; text-shadow: 0 1px 0 #d39b00; }
+  .card { position: absolute; background: #e9ebef; border-radius: 22px; box-shadow: 0 3px 6px rgba(0,0,0,.18); }
+  .tab { position: absolute; top: -18px; background: #a9cdef; color: #1d2b3a; font-weight: 900; font-size: 20px; padding: 4px 18px; border-radius: 8px 8px 0 0; }
+  .item { position: absolute; width: 130px; text-align: center; }
+  .item .ic { font-size: 40px; line-height: 1.1; }
+  .item .lb { color: #2f6db5; font-weight: 700; font-size: 16px; margin-top: 4px; line-height: 1.25; }
+  .item .sub { color: #666; font-size: 12.5px; margin-top: 2px; line-height: 1.3; }
+  .chip { position: absolute; width: 110px; height: 110px; background: #1d1f24; border-radius: 6px; display:flex; align-items:center; justify-content:center; }
+  .chip::before { content:""; position:absolute; inset:-9px; border:4px dotted #6aa8e8; border-radius:8px; }
+  .chip span { width: 78px; height: 78px; background: #8fc0f0; border: 3px solid #2d5f99; display:flex; align-items:center; justify-content:center; font-size: 46px; font-weight: 900; color:#111; }
+  .devname { position: absolute; font-weight: 900; font-size: 22px; color: #222; }
+  svg.lines { position: absolute; left: 0; top: 0; pointer-events: none; }
+  .label { position: absolute; font-weight: 700; font-size: 17px; color: #222; background:#fff; padding: 0 4px; }
+  .lock { display:inline-flex; width:30px; height:30px; border-radius:50%; background:#111; color:#fff; align-items:center; justify-content:center; font-size:15px; vertical-align: middle; margin-right: 6px; }
+  .user-item { position:absolute; width: 170px; text-align:center; }
+  .user-item .ic { font-size: 44px; }
+  .user-item .lb { font-weight: 700; font-size: 16px; margin-top: 4px; }
+  .user-item .sub { color:#666; font-size: 12.5px; }
+  /* timeline */
+  .tl { position:absolute; }
+  .tl-row { display:flex; height: 64px; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,.15); }
+  .seg { display:flex; flex-direction:column; align-items:center; justify-content:center; color:#fff; font-weight:700; font-size: 15px; text-align:center; line-height: 1.25; }
+  .seg small { font-weight: 500; font-size: 12px; opacity: .95; }
+  .tl-axis { display:flex; margin-top: 8px; font-size: 13.5px; color:#444; font-weight: 700; }
+  .tl-axis div { text-align:center; }
+  .anc-row { display:flex; height: 30px; margin-top: 8px; border-radius: 8px; overflow:hidden; font-size: 13px; font-weight:700; }
+  .anc-row div { display:flex; align-items:center; justify-content:center; }
+  .caption { text-align:center; font-size: 22px; margin-top: 18px; color:#222; }
+  .legend { position:absolute; font-size: 13px; color:#444; }
+</style>
+</head>
+<body>
+<div class="wrap" style="height: 1015px;">
+
+  <!-- ===== Edge System zone ===== -->
+  <div class="zone" style="left:0; top:0; width:1180px; height:330px;"></div>
+  <div class="zone-title" style="left:1010px; top:22px; text-align:right;">Edge<br>System</div>
+
+  <!-- Device H : Hood pillow -->
+  <div class="card" style="left:22px; top:22px; width:600px; height:288px;"></div>
+  <div class="item" style="left:40px; top:34px;"><div class="ic">💡</div><div class="lb">수면 조명 LED</div><div class="sub">청색광 · 앰버광<br>밝기·색온도 제어</div></div>
+  <div class="item" style="left:180px; top:34px;"><div class="ic">🎧</div><div class="lb">노이즈캔슬링</div><div class="sub">ANC 마이크·스피커</div></div>
+  <div class="item" style="left:470px; top:34px;"><div class="ic">📳</div><div class="lb">수면 감지</div><div class="sub">IMU (머리 움직임)</div></div>
+  <div class="item" style="left:40px; top:190px;"><div class="ic">🔋</div><div class="lb">배터리</div><div class="sub">USB-C 충전</div></div>
+  <div class="item" style="left:470px; top:180px;"><div class="ic">🦴</div><div class="lb">목 안착 감지</div><div class="sub">압력 센서<br>(착용·자세 인식)</div></div>
+  <div class="chip" style="left:268px; top:132px;"><span>H</span></div>
+  <div class="devname" style="left:236px; top:272px;">Hood Pillow (Device)</div>
+
+  <!-- Mobile App -->
+  <div class="card" style="left:740px; top:22px; width:250px; height:288px;"></div>
+  <div class="item" style="left:800px; top:30px;"><div class="ic">✈️</div><div class="lb">항공편 인식</div><div class="sub">편명 입력 · 탑승권 QR<br>· 예약 메일 연동</div></div>
+  <div class="item" style="left:800px; top:140px;"><div class="ic">🗓️</div><div class="lb">맞춤 시차 스케줄</div><div class="sub">빛 · 수면 · 기상 시간</div></div>
+  <div class="devname" style="left:796px; top:272px;">Mobile App</div>
+
+  <!-- Edge AI -->
+  <div class="zone" style="left:1012px; top:120px; width:150px; height:150px; border-width:2px; border-radius: 18px;"></div>
+  <div class="item" style="left:1022px; top:136px;"><div class="ic">🧠</div><div class="lb">수면 단계<br>추정 모델</div><div class="sub">On-device AI</div></div>
+
+  <!-- ===== Server zone ===== -->
+  <div class="zone" style="left:0; top:420px; width:1180px; height:300px;"></div>
+  <div class="zone-title" style="left:330px; top:672px;">Server</div>
+
+  <!-- Flight data -->
+  <div class="card" style="left:30px; top:460px; width:260px; height:200px;"></div>
+  <div class="tab" style="left:60px; top:442px;">Flight Data</div>
+  <div class="item" style="left:95px; top:480px;"><div class="ic">🛫</div><div class="lb">항공편 API</div><div class="sub">출·도착 시각, 경유지<br>출발지·도착지 시간대<br>실시간 지연 반영</div></div>
+
+  <!-- AI engine -->
+  <div class="card" style="left:340px; top:460px; width:430px; height:200px;"></div>
+  <div class="tab" style="left:370px; top:442px;">Circadian AI Engine</div>
+  <div class="item" style="left:360px; top:480px;"><div class="ic">🗄️</div><div class="lb">데이터베이스</div><div class="sub">수면 기록 · 크로노타입<br>이전 비행 이력</div></div>
+  <div class="item" style="left:560px; top:480px; width:190px;"><div class="ic">🧠</div><div class="lb">광치료 스케줄 생성</div><div class="sub">시차 방향(동/서)·시간 계산<br>개인 맞춤 AI 학습</div></div>
+
+  <!-- Trigger -->
+  <div class="card" style="left:820px; top:460px; width:330px; height:200px;"></div>
+  <div class="tab" style="left:850px; top:442px;">Trigger</div>
+  <div class="item" style="left:835px; top:480px; width:150px;"><div class="ic">📡</div><div class="lb">스케줄 동기화</div><div class="sub">비행 전 앱에 다운로드<br>(기내 오프라인 동작)</div></div>
+  <div class="item" style="left:990px; top:480px; width:150px;"><div class="ic">🔔</div><div class="lb">PUSH 알림</div><div class="sub">탑승 · 수면 · 기상<br>현지 적응 가이드</div></div>
+
+  <!-- ===== User zone ===== -->
+  <div class="zone" style="left:1240px; top:0; width:300px; height:720px;"></div>
+  <div class="zone-title" style="left:1340px; top:24px;">User</div>
+  <div class="user-item" style="left:1305px; top:90px;"><div class="ic">🧳</div><div class="lb">장거리 비행 여행객</div><div class="sub">출장자 · 여행객 · 유학생</div></div>
+  <div class="user-item" style="left:1305px; top:250px;"><div class="ic">⌚</div><div class="lb">웨어러블 연동</div><div class="sub">Apple Health · Galaxy Watch<br>수면 데이터 보정</div></div>
+  <div class="user-item" style="left:1305px; top:410px;"><div class="ic">🏢</div><div class="lb">항공사 · 여행사</div><div class="sub">B2B 제휴 · 비즈니스석<br>어메니티 / 렌탈</div></div>
+  <div class="user-item" style="left:1305px; top:570px;"><div class="ic">📊</div><div class="lb">수면 리포트</div><div class="sub">시차 적응 점수<br>도착 후 컨디션 관리</div></div>
+
+  <!-- ===== connectors ===== -->
+  <svg class="lines" width="1600" height="1060">
+    <defs>
+      <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#333"/></marker>
+    </defs>
+    <g stroke="#333" stroke-width="2.5" fill="none">
+      <!-- chip spokes -->
+      <line x1="285" y1="140" x2="172" y2="122"/><line x1="315" y1="128" x2="250" y2="128"/>
+      <line x1="355" y1="128" x2="505" y2="122"/><line x1="268" y1="210" x2="172" y2="238"/>
+      <line x1="382" y1="210" x2="478" y2="200"/>
+      <!-- BLE -->
+      <line x1="626" y1="166" x2="736" y2="166" marker-start="url(#a)" marker-end="url(#a)"/>
+      <!-- App <-> Edge AI -->
+      <line x1="994" y1="195" x2="1010" y2="195"/>
+      <!-- App <-> Server -->
+      <line x1="865" y1="314" x2="865" y2="438" marker-start="url(#a)" marker-end="url(#a)"/>
+      <!-- Flight -> AI -> Trigger -->
+      <line x1="292" y1="560" x2="336" y2="560" marker-end="url(#a)"/>
+      <line x1="772" y1="560" x2="816" y2="560" marker-end="url(#a)"/>
+      <line x1="500" y1="545" x2="575" y2="545" marker-start="url(#a)" marker-end="url(#a)"/>
+      <!-- Server -> User -->
+      <line x1="1154" y1="600" x2="1236" y2="600" marker-end="url(#a)"/>
+      <!-- Wearable -> App -->
+      <line x1="1236" y1="290" x2="1184" y2="290" marker-end="url(#a)"/>
+    </g>
+  </svg>
+  <div class="label" style="left:640px; top:136px;">BLE 5.0</div>
+  <div class="label" style="left:880px; top:360px;"><span class="lock">🔒</span>HTTPS / MQTT</div>
+  <div class="label" style="left:1162px; top:566px; font-size:15px;">HTTP</div>
+
+  <!-- ===== Light schedule timeline ===== -->
+  <div class="zone" style="left:0; top:760px; width:1540px; height:250px; border-color:#d7c9a0;"></div>
+  <div class="zone-title" style="left:24px; top:778px; font-size:24px;">Light Schedule <span style="color:#555; text-shadow:none; font-weight:700; font-size:17px;">예) 인천 → 뉴욕 (14시간 비행, 시차 -13h)</span></div>
+
+  <div class="tl" style="left:24px; top:828px; width:1492px;">
+    <div class="tl-row">
+      <div class="seg" style="flex:2; background:#6c7a89;">탑승 · 이륙<small>착용 감지 → 스케줄 시작</small></div>
+      <div class="seg" style="flex:3; background:#e8912d;">앰버광 (멜라토닌 보호)<small>청색광 차단 · 점진 감광</small></div>
+      <div class="seg" style="flex:5; background:#2a2f45;">소등 · 수면 유도<small>도착지 밤 시간대에 맞춰 수면</small></div>
+      <div class="seg" style="flex:2; background:#f2b705; color:#222;">일출 시뮬레이션<small>점진 점등 기상</small></div>
+      <div class="seg" style="flex:3; background:#3b82d6;">청색광 (각성)<small>~470nm · 도착지 아침 맞춤</small></div>
+      <div class="seg" style="flex:2; background:#6c7a89;">착륙 · 도착<small>현지 적응 가이드 PUSH</small></div>
+    </div>
+    <div class="anc-row">
+      <div style="flex:2; background:#dfe3e8; color:#555;">ANC 대기</div>
+      <div style="flex:3; background:#cfe3f7; color:#1d4f86;">ANC ON · 화이트노이즈</div>
+      <div style="flex:5; background:#a9cdef; color:#1d3b5e;">ANC 최대 · 엔진 저주파 소음 차단</div>
+      <div style="flex:2; background:#cfe3f7; color:#1d4f86;">기상 알람</div>
+      <div style="flex:3; background:#dfe3e8; color:#555;">ANC 약 · 기내방송 통과</div>
+      <div style="flex:2; background:#dfe3e8; color:#555;">OFF</div>
+    </div>
+    <div class="tl-axis">
+      <div style="flex:2;">0h</div><div style="flex:3;">1~3h</div><div style="flex:5;">3~10h</div><div style="flex:2;">10~11h</div><div style="flex:3;">11~13h</div><div style="flex:2;">14h</div>
+    </div>
+  </div>
+  <div class="legend" style="left:24px; top:975px;">※ 빛 시간대는 항공편 출발·도착 시각과 시차 방향(동쪽/서쪽)에 따라 서버에서 자동 계산되며, 수면 감지 결과에 따라 기기에서 실시간 보정됩니다.</div>
+</div>
+<div class="caption">〈그림〉 시차 적응 후드형 목베개 시스템 흐름도</div>
+</body>
+</html>
