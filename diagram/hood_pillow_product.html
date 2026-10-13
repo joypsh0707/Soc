@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  html, body { margin: 0; background: #ffffff; }
+  svg { display: block; font-family: "Noto Sans KR", "WenQuanYi Zen Hei", sans-serif; }
+  .t-title { font-size: 34px; font-weight: 900; fill: #1d2b3a; }
+  .t-sub { font-size: 17px; fill: #5b6675; }
+  .num { font-size: 17px; font-weight: 900; fill: #fff; }
+  .lb { font-size: 19px; font-weight: 700; fill: #1d2b3a; }
+  .ds { font-size: 14.5px; fill: #4f5a68; }
+  .tag { font-size: 12.5px; font-weight: 700; }
+  .small { font-size: 13px; fill: #4f5a68; }
+  .step { font-size: 17px; font-weight: 700; fill: #1d2b3a; }
+  .stepd { font-size: 13.5px; fill: #5b6675; }
+</style>
+</head>
+<body>
+<svg width="1600" height="1000" viewBox="0 0 1600 1000" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="glowBlue" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#5aa9ff" stop-opacity=".95"/>
+      <stop offset="1" stop-color="#5aa9ff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowAmber" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#ffb347" stop-opacity=".95"/>
+      <stop offset="1" stop-color="#ffb347" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="rays" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffc56b" stop-opacity=".75"/>
+      <stop offset="1" stop-color="#ffc56b" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="hood" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#4a5d7c"/>
+      <stop offset="1" stop-color="#2c3a52"/>
+    </linearGradient>
+    <linearGradient id="pillow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#cfd8e6"/>
+      <stop offset="1" stop-color="#9fb0c8"/>
+    </linearGradient>
+    <pattern id="foam" width="14" height="14" patternUnits="userSpaceOnUse">
+      <circle cx="4" cy="4" r="1.6" fill="#8597b3" opacity=".55"/>
+      <circle cx="11" cy="10" r="1.2" fill="#8597b3" opacity=".45"/>
+    </pattern>
+    <pattern id="absorb" width="10" height="10" patternUnits="userSpaceOnUse">
+      <rect width="10" height="10" fill="#f3d27a"/>
+      <circle cx="5" cy="5" r="2" fill="#d9b24a"/>
+    </pattern>
+    <clipPath id="insetClip"><circle cx="190" cy="350" r="92"/></clipPath>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000" flood-opacity=".18"/>
+    </filter>
+  </defs>
+
+  <!-- title -->
+  <text x="40" y="62" class="t-title">후드형 스마트 목베개</text>
+  <text x="40" y="94" class="t-sub">항공편 연동 시차 적응 조명 · 차음·차광 후드 · 목 온열 · 온디바이스 제어</text>
+
+  <!-- soft stage -->
+  <ellipse cx="600" cy="760" rx="300" ry="28" fill="#e9edf3"/>
+
+  <!-- ===== Head (side profile, facing right) ===== -->
+  <g fill="#f1d6c2" stroke="#d9b9a2" stroke-width="2">
+    <path d="M 545 560 L 545 740 L 660 740 L 662 600 Z"/>
+    <path d="M 600 270 C 690 270 738 320 740 380 C 741 395 736 402 738 412 C 742 428 756 440 766 456 C 770 464 760 468 748 470 C 752 478 754 484 748 490 C 752 496 754 503 746 510 C 740 516 742 522 746 532 C 748 548 730 560 710 566 L 662 600 L 545 560 C 500 535 470 480 470 410 C 470 330 520 270 600 270 Z"/>
+  </g>
+  <!-- closed eye -->
+  <path d="M 705 408 q 12 7 24 0" stroke="#7a5a48" stroke-width="3" fill="none" stroke-linecap="round"/>
+
+  <!-- light rays from LED to eye -->
+  <path d="M 712 318 L 690 405 L 752 405 L 742 318 Z" fill="url(#rays)"/>
+
+  <!-- ===== Hood ===== -->
+  <path d="M 752 300 C 720 200 540 180 470 260 C 410 330 405 470 440 575
+           L 560 612 L 700 590 C 712 480 700 390 752 300 Z" fill="url(#hood)" filter="url(#shadow)"/>
+  <!-- hood seam -->
+  <path d="M 735 305 C 700 230 560 215 495 275 C 450 320 440 440 462 560" fill="none" stroke="#7d90b0" stroke-width="2" stroke-dasharray="7 6"/>
+  <!-- brim -->
+  <path d="M 752 300 C 715 360 706 420 708 470" stroke="#1f2a3d" stroke-width="16" fill="none" stroke-linecap="round"/>
+  <!-- LED strip on brim -->
+  <g>
+    <circle cx="742" cy="316" r="30" fill="url(#glowAmber)"/>
+    <circle cx="728" cy="350" r="26" fill="url(#glowBlue)"/>
+    <rect x="736" y="306" width="10" height="7" rx="2" fill="#ffb347"/>
+    <rect x="729" y="322" width="10" height="7" rx="2" fill="#ffb347"/>
+    <rect x="724" y="338" width="10" height="7" rx="2" fill="#5aa9ff"/>
+    <rect x="720" y="354" width="10" height="7" rx="2" fill="#5aa9ff"/>
+    <rect x="717" y="370" width="10" height="7" rx="2" fill="#ffb347"/>
+  </g>
+
+  <!-- ===== Neck pillow ===== -->
+  <path d="M 430 600 C 430 560 470 548 520 555 L 700 560 C 760 562 790 590 784 628
+           C 778 668 740 680 690 676 L 500 668 C 455 664 430 640 430 600 Z"
+        fill="url(#pillow)" stroke="#8597b3" stroke-width="2" filter="url(#shadow)"/>
+  <path d="M 430 600 C 430 560 470 548 520 555 L 700 560 C 760 562 790 590 784 628
+           C 778 668 740 680 690 676 L 500 668 C 455 664 430 640 430 600 Z" fill="url(#foam)"/>
+  <!-- heating pad (back of neck) -->
+  <rect x="452" y="574" width="100" height="74" rx="12" fill="#ff9a4d" opacity=".9"/>
+  <path d="M 462 590 h 80 M 462 604 h 80 M 462 618 h 80 M 462 632 h 80" stroke="#c4521a" stroke-width="3" stroke-dasharray="10 5"/>
+  <g stroke="#ff7a2e" stroke-width="3" fill="none" stroke-linecap="round" opacity=".85">
+    <path d="M 470 568 q -8 -12 0 -24 q 8 -12 0 -24"/>
+    <path d="M 500 566 q -8 -12 0 -24 q 8 -12 0 -24"/>
+    <path d="M 530 568 q -8 -12 0 -24 q 8 -12 0 -24"/>
+  </g>
+
+  <!-- control module -->
+  <g filter="url(#shadow)">
+    <rect x="600" y="588" width="86" height="54" rx="10" fill="#1d1f24"/>
+    <rect x="612" y="598" width="34" height="34" rx="3" fill="#8fc0f0" stroke="#2d5f99" stroke-width="2"/>
+    <text x="629" y="621" text-anchor="middle" font-size="15" font-weight="900" fill="#111">H</text>
+    <circle cx="668" cy="604" r="4" fill="#4ade80"/>
+    <rect x="656" y="616" width="22" height="16" rx="3" fill="#3a3f48"/>
+  </g>
+  <!-- BLE waves -->
+  <g stroke="#3b82d6" stroke-width="3" fill="none" stroke-linecap="round">
+    <path d="M 700 585 q 12 -14 0 -28"/><path d="M 712 592 q 22 -21 0 -42"/><path d="M 724 600 q 32 -29 0 -58"/>
+  </g>
+
+  <!-- USB-C cable to power bank -->
+  <path d="M 667 642 C 680 700 700 720 760 740 C 800 752 830 760 860 760" stroke="#2b2f36" stroke-width="6" fill="none" stroke-linecap="round"/>
+  <g filter="url(#shadow)">
+    <rect x="858" y="728" width="120" height="64" rx="12" fill="#e7ebf1" stroke="#9aa6b6" stroke-width="2"/>
+    <rect x="874" y="748" width="58" height="24" rx="4" fill="#cfd6e0"/>
+    <rect x="878" y="752" width="40" height="16" rx="2" fill="#4ade80"/>
+    <text x="918" y="814" text-anchor="middle" class="small">보조배터리 / 기내 USB</text>
+  </g>
+
+  <!-- ===== Inset: hood cross-section ===== -->
+  <circle cx="190" cy="350" r="96" fill="#fff" stroke="#c9d1dc" stroke-width="3"/>
+  <g clip-path="url(#insetClip)">
+    <rect x="90" y="250" width="200" height="200" fill="#f6f8fb"/>
+    <path d="M 90 300 Q 190 270 290 300 L 290 330 Q 190 300 90 330 Z" fill="#2c3a52"/>
+    <path d="M 90 330 Q 190 300 290 330 L 290 380 Q 190 350 90 380 Z" fill="url(#absorb)"/>
+    <path d="M 90 380 Q 190 350 290 380 L 290 400 Q 190 370 90 400 Z" fill="#cdd6e4"/>
+    <g stroke="#e05555" stroke-width="2.5" fill="none" stroke-linecap="round">
+      <path d="M 120 268 l 0 26 m -6 -8 l 6 8 l 6 -8"/>
+      <path d="M 260 268 l 0 26 m -6 -8 l 6 8 l 6 -8"/>
+    </g>
+    <text x="190" y="428" text-anchor="middle" class="tag" fill="#2c3a52">소음·빛 차단</text>
+  </g>
+  <line x1="276" y1="320" x2="500" y2="268" stroke="#9aa6b6" stroke-width="2" stroke-dasharray="5 5"/>
+  <circle cx="500" cy="268" r="6" fill="#9aa6b6"/>
+  <text x="300" y="290" class="tag" fill="#2c3a52">겉감</text>
+  <text x="300" y="352" class="tag" fill="#9a7a1c">흡음재</text>
+  <text x="300" y="393" class="tag" fill="#5b6675">안감</text>
+
+  <!-- ===== Callouts ===== -->
+  <g>
+    <!-- 1 hood (left) -->
+    <circle cx="58" cy="490" r="16" fill="#2c3a52"/><text x="58" y="496" text-anchor="middle" class="num">1</text>
+    <text x="84" y="497" class="lb">차음·차광 후드</text>
+    <text x="84" y="521" class="ds">겉감 + 흡음재 + 안감 3중 구조</text>
+    <text x="84" y="542" class="ds">엔진 소음·기내 조명 차단, 개인 수면 공간</text>
+
+    <!-- 3 heating (left) -->
+    <circle cx="58" cy="625" r="16" fill="#e8742c"/><text x="58" y="631" text-anchor="middle" class="num">3</text>
+    <text x="84" y="632" class="lb">목 온열 패드</text>
+    <text x="84" y="656" class="ds">탄소섬유 면상 발열체 + NTC 온도 센서</text>
+    <text x="84" y="677" class="ds">40℃ 이하 정온 제어, 과열 자동 차단</text>
+    <line x1="380" y1="618" x2="452" y2="610" stroke="#9aa6b6" stroke-width="2" stroke-dasharray="5 5"/>
+    <circle cx="452" cy="610" r="5" fill="#e8742c"/>
+
+    <!-- 4 memory foam (left bottom) -->
+    <circle cx="58" cy="760" r="16" fill="#6f84a6"/><text x="58" y="766" text-anchor="middle" class="num">4</text>
+    <text x="84" y="767" class="lb">메모리폼 목 지지</text>
+    <text x="84" y="791" class="ds">머리 쏠림·꺾임 방지 경추 지지 구조</text>
+    <text x="84" y="812" class="ds">압력 센서로 착용 감지 → 스케줄 자동 시작</text>
+    <line x1="380" y1="752" x2="500" y2="664" stroke="#9aa6b6" stroke-width="2" stroke-dasharray="5 5"/>
+    <circle cx="500" cy="664" r="5" fill="#6f84a6"/>
+
+    <!-- 2 LED (right) -->
+    <circle cx="880" cy="200" r="16" fill="#f2a516"/><text x="880" y="206" text-anchor="middle" class="num">2</text>
+    <text x="906" y="207" class="lb">시차 적응 수면 조명 LED</text>
+    <text x="906" y="231" class="ds">후드 챙 내부 확산 패널 · PWM 밝기/색 제어</text>
+    <line x1="868" y1="214" x2="752" y2="318" stroke="#9aa6b6" stroke-width="2" stroke-dasharray="5 5"/>
+    <!-- spectrum chips -->
+    <g transform="translate(906,248)">
+      <rect width="168" height="40" rx="8" fill="#3b82d6"/>
+      <text x="84" y="17" text-anchor="middle" class="tag" fill="#fff">청색광 ~470nm</text>
+      <text x="84" y="33" text-anchor="middle" font-size="12" fill="#e5efff">각성 · 멜라토닌 억제</text>
+      <rect x="180" width="168" height="40" rx="8" fill="#e8912d"/>
+      <text x="264" y="17" text-anchor="middle" class="tag" fill="#fff">앰버광 ~590nm</text>
+      <text x="264" y="33" text-anchor="middle" font-size="12" fill="#fff3e3">수면 유도 · 멜라토닌 보호</text>
+    </g>
+
+    <!-- 5 control module (right) -->
+    <circle cx="880" cy="400" r="16" fill="#1d1f24"/><text x="880" y="406" text-anchor="middle" class="num">5</text>
+    <text x="906" y="407" class="lb">온디바이스 제어 모듈</text>
+    <text x="906" y="431" class="ds">nRF52840 BLE 5.0 · 6축 IMU(수면 감지) · RTC</text>
+    <text x="906" y="452" class="ds">비행 전 스케줄 저장 → 인터넷 없이 기내 자동 실행</text>
+    <line x1="868" y1="412" x2="690" y2="596" stroke="#9aa6b6" stroke-width="2" stroke-dasharray="5 5"/>
+
+    <!-- 6 power (right) -->
+    <circle cx="880" cy="545" r="16" fill="#4b5563"/><text x="880" y="551" text-anchor="middle" class="num">6</text>
+    <text x="906" y="552" class="lb">외부 전원 연동 초경량 설계</text>
+    <text x="906" y="576" class="ds">USB-C 5V · 대용량 내장 배터리 없음</text>
+    <text x="906" y="597" class="ds">경량화 · 발열 위험 감소 · 기내 반입 용이</text>
+    <line x1="868" y1="556" x2="845" y2="745" stroke="#9aa6b6" stroke-width="2" stroke-dasharray="5 5"/>
+  </g>
+
+  <!-- ===== Phone (app) ===== -->
+  <g transform="translate(1310,160)" filter="url(#shadow)">
+    <rect width="230" height="440" rx="32" fill="#1d1f24"/>
+    <rect x="12" y="14" width="206" height="412" rx="22" fill="#f6f8fb"/>
+    <rect x="85" y="22" width="60" height="8" rx="4" fill="#1d1f24"/>
+    <text x="115" y="62" text-anchor="middle" font-size="15" font-weight="900" fill="#1d2b3a">시차 적응 플랜</text>
+    <!-- flight card -->
+    <rect x="26" y="78" width="178" height="82" rx="12" fill="#fff" stroke="#dde3ec"/>
+    <text x="40" y="100" font-size="12" fill="#5b6675">KE081 · 14h 10m</text>
+    <text x="40" y="132" font-size="24" font-weight="900" fill="#1d2b3a">ICN</text>
+    <text x="115" y="130" text-anchor="middle" font-size="18" fill="#3b82d6">✈</text>
+    <text x="190" y="132" text-anchor="end" font-size="24" font-weight="900" fill="#1d2b3a">JFK</text>
+    <text x="40" y="150" font-size="11" fill="#5b6675">시차 −13h · 생체시계 늦추기</text>
+    <!-- schedule bars -->
+    <text x="26" y="188" font-size="13" font-weight="700" fill="#1d2b3a">기내 조명 스케줄</text>
+    <g transform="translate(26,198)">
+      <rect width="178" height="22" rx="5" fill="#eef1f5"/>
+      <rect x="0" width="40" height="22" rx="5" fill="#e8912d"/>
+      <rect x="40" width="72" height="22" fill="#2a2f45"/>
+      <rect x="112" width="22" height="22" fill="#f2b705"/>
+      <rect x="134" width="44" height="22" rx="5" fill="#3b82d6"/>
+    </g>
+    <g font-size="11" fill="#4f5a68">
+      <rect x="26" y="234" width="10" height="10" rx="2" fill="#e8912d"/><text x="42" y="243">앰버광 · 수면 준비</text>
+      <rect x="26" y="252" width="10" height="10" rx="2" fill="#2a2f45"/><text x="42" y="261">소등 · 수면</text>
+      <rect x="26" y="270" width="10" height="10" rx="2" fill="#f2b705"/><text x="42" y="279">일출 시뮬레이션 기상</text>
+      <rect x="26" y="288" width="10" height="10" rx="2" fill="#3b82d6"/><text x="42" y="297">청색광 · 각성</text>
+    </g>
+    <rect x="26" y="316" width="178" height="40" rx="10" fill="#3b82d6"/>
+    <text x="115" y="341" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">후드로 전송 (BLE)</text>
+    <text x="115" y="384" text-anchor="middle" font-size="11.5" fill="#5b6675">온열 · 알림 설정 포함</text>
+  </g>
+  <!-- phone ↔ module link -->
+  <path d="M 1300 560 C 1200 650 900 660 745 590" stroke="#3b82d6" stroke-width="3" fill="none" stroke-dasharray="3 8" stroke-linecap="round"/>
+  <text x="1110" y="652" class="tag" fill="#3b82d6">BLE 5.0</text>
+  <text x="1425" y="635" text-anchor="middle" class="lb">모바일 앱</text>
+  <text x="1425" y="659" text-anchor="middle" class="ds">항공권 입력 → 맞춤 스케줄 자동 생성</text>
+
+  <!-- ===== How it works strip ===== -->
+  <g transform="translate(985,860)">
+    <rect x="-20" y="-22" width="600" height="112" rx="16" fill="#f3f5f9"/>
+    <g>
+      <circle cx="20" cy="18" r="16" fill="#3b82d6"/><text x="20" y="24" text-anchor="middle" class="num">1</text>
+      <text x="44" y="24" class="step">항공권 입력</text>
+      <text x="0" y="58" class="stepd">편명·탑승권 QR</text>
+    </g>
+    <text x="165" y="26" font-size="24" fill="#9aa6b6">→</text>
+    <g transform="translate(200,0)">
+      <circle cx="20" cy="18" r="16" fill="#3b82d6"/><text x="20" y="24" text-anchor="middle" class="num">2</text>
+      <text x="44" y="24" class="step">스케줄 전송</text>
+      <text x="0" y="58" class="stepd">시차·수면 패턴 분석</text>
+    </g>
+    <text x="365" y="26" font-size="24" fill="#9aa6b6">→</text>
+    <g transform="translate(400,0)">
+      <circle cx="20" cy="18" r="16" fill="#3b82d6"/><text x="20" y="24" text-anchor="middle" class="num">3</text>
+      <text x="44" y="24" class="step">기내 자동 제어</text>
+      <text x="0" y="58" class="stepd">빛·온열 오프라인 실행</text>
+    </g>
+  </g>
+</svg>
+</body>
+</html>
